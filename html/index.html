@@ -13,14 +13,14 @@
     <div class="container">
         <!-- text container -->
         <div id="text-container" class="text-container">
-            Lorem ipsum dolor sit amet <span style="color:aqua;"> consectetur</span>, adipisicing elit. Optio quia tenetur odit, magni hic beatae unde neque ipsam! Dolor adipisci illum possimus excepturi at iste explicabo deserunt amet odit ullam.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quia tenetur odit, magni hic beatae unde neque ipsam! Dolor adipisci illum possimus excepturi at iste explicabo deserunt amet odit ullam.
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam neque laudantium vel non expedita eum a nobis veniam impedit nam. Expedita, dolor corporis libero at ad quas autem veniam sapiente.
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam blanditiis ipsa molestias unde quis! Fugiat eos maxime cum, necessitatibus perferendis architecto, recusandae est soluta, excepturi accusamus quidem qui fuga unde.
         </div>
 
         <!-- score  -->
-        <div class="score">
-            67840
+        <div id="score" class="score">
+            0
         </div>
 
         <!-- encouraging text  -->
@@ -37,13 +37,13 @@
 
             <!-- speed  -->
             <div class="speed">
-                Speed: <span> 60 </span>  WPM
+                Speed: <span id="speed_counter"> 60 </span>  WPM
             </div>
         </div>
 
         <!-- typing area  -->
         <div class="typing-area">
-            <input type="text" placeholder="Type here"/>
+            <input id="type" type="text" placeholder="Type here" oninput="wordTyped(event)"/>
         </div>
     </div>
 </body>
