@@ -69,3 +69,8 @@ body {
     border-radius: 8px;
     font-weight: 300;
 }
+
+.pause {
+    background-color: transparent;
+    border: none;
+}

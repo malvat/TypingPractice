@@ -12,10 +12,30 @@ var speed = 0;
 var end_game = false;
 var score_speed = 100;
 var score_update;
+var audio = new Audio("../audio/background.mp3");
+var mute = false;
 
 window.onload = async function() {
     document.getElementById('text-container').innerHTML = content;
     score_update = setInterval(updateScore, score_speed/(streak*10));
+    audio.loop = true;
+}
+
+function pausePlay() {
+    if(audio.paused) {
+        audio.play();
+        document.getElementById('pause-image').src = "../icon/sound_off.png";
+    } else {
+        audio.pause();
+        mute = true;
+        document.getElementById('pause-image').src = "../icon/sound_on.png";
+    }
+}
+
+function onTextClick() {
+    if(!mute) {
+        audio.play();
+    }
 }
 
 function updateScore() {

@@ -35,6 +35,12 @@
                 Accuracy: <span> 90% </span>
             </div>
 
+            <div class="pause-container">
+                <button id="pause" class="pause" onclick="pausePlay()">
+                    <img id="pause-image" src="../icon/sound_on.png">
+                </button>
+            </div>
+
             <!-- speed  -->
             <div class="speed">
                 Speed: <span id="speed_counter"> 60 </span>  WPM
@@ -43,8 +49,13 @@
 
         <!-- typing area  -->
         <div class="typing-area">
-            <input id="type" type="text" placeholder="Type here" oninput="wordTyped(event)"/>
+            <input id="type" type="text" placeholder="Type here" onclick="onTextClick()" oninput="wordTyped(event)"/>
         </div>
+
+        <audio id="audio" autoplay>
+            <source src="../audio/background.mp3" type="audio/mp3">
+        </audio>
+        
     </div>
 </body>
 </html>
