@@ -21,7 +21,7 @@ window.onload = async function() {
     audio.loop = true;
 }
 
-function pausePlay() {
+function pausePlay(event) {
     if(audio.paused) {
         audio.play();
         document.getElementById('pause-image').src = "../icon/sound_off.png";
@@ -32,7 +32,7 @@ function pausePlay() {
     }
 }
 
-function onTextClick() {
+function onTextClick(event) {
     if(!mute) {
         audio.play();
     }

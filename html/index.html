@@ -36,7 +36,7 @@
             </div>
 
             <div class="pause-container">
-                <button id="pause" class="pause" onclick="pausePlay()">
+                <button id="pause" class="pause" onclick="pausePlay(event)">
                     <img id="pause-image" src="../icon/sound_on.png">
                 </button>
             </div>
@@ -49,7 +49,7 @@
 
         <!-- typing area  -->
         <div class="typing-area">
-            <input id="type" type="text" placeholder="Type here" onclick="onTextClick()" oninput="wordTyped(event)"/>
+            <input id="type" type="text" placeholder="Type here" onclick="onTextClick(event)" oninput="wordTyped(event)"/>
         </div>
 
         <audio id="audio" autoplay>
