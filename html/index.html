@@ -6,16 +6,30 @@
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="../js/sketch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Typing Practice</title>
 </head>
 <body>
+    <div id = "canvas">
+
+    </div>
     <!-- container  -->
     <div class="container">
+        <!-- health bar  -->
+        <div id='health-bar' class="health-bar">
+
+        </div>
+
         <!-- text container -->
-        <div id="text-container" class="text-container">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quia tenetur odit, magni hic beatae unde neque ipsam! Dolor adipisci illum possimus excepturi at iste explicabo deserunt amet odit ullam.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam neque laudantium vel non expedita eum a nobis veniam impedit nam. Expedita, dolor corporis libero at ad quas autem veniam sapiente.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam blanditiis ipsa molestias unde quis! Fugiat eos maxime cum, necessitatibus perferendis architecto, recusandae est soluta, excepturi accusamus quidem qui fuga unde.
+        <div id="main-container" class="main-container">
+            <span id="text-container" class="text-container">
+
+            </span>
+            <div id="bonus-text" class="bonus-text">
+                ANIM MALVAT
+            </div>
         </div>
 
         <!-- score  -->
@@ -45,6 +59,11 @@
             <div class="speed">
                 Speed: <span id="speed_counter"> 60 </span>  WPM
             </div>
+        </div>
+    
+        
+        <div id='loading-bar' class="loading-bar">
+
         </div>
 
         <!-- typing area  -->
