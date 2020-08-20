@@ -1,10 +1,12 @@
+/* general styling of the page  */
 body {
     box-sizing: border-box;
     margin: 0;
     background-color: #282828;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
+/* setting container to flex to take control of how it looks */
 .container {
     padding: 5%;
     padding-top: 2%;
@@ -17,6 +19,7 @@ body {
     color: white;
 }
 
+/* main text container to contain the text  */
 .main-container {
     border: 1px solid grey;
     height: 40%;
@@ -30,10 +33,7 @@ body {
     position: relative;
 }
 
-.text-container {
-    /* visibility: hidden; */
-}
-
+/* text that is displayed after one iteration is completed  */
 .bonus-text {
     position: absolute;
     left: 0;
@@ -45,6 +45,7 @@ body {
     visibility: hidden;
 }
 
+/* calculated score that is displayed  */
 .score {
     height: 10%;
     text-align: center;
@@ -52,6 +53,7 @@ body {
     font-weight: 100;
 }
 
+/* encouraging text to user to keep it up  */
 .encouraging-text {
     height: 10%;
     text-align: center;
@@ -60,10 +62,12 @@ body {
     opacity: 0;
 }
 
+/* animate the text for effect  */
 .encouraging-text-animated {
     animation: 4s encouraging-text-animation ease;
 }
 
+/* set simple keyframes to make the text appear floating  */
 @keyframes encouraging-text-animation {
     0% {
         opacity: 0;
@@ -79,6 +83,7 @@ body {
     }
 }
 
+/* all the necessary information about the game  */
 .progress {
     height: 5%;
     display: flex;
@@ -87,18 +92,20 @@ body {
     font-weight: 200;
 }
 
+/* container of the input to start typing the content  */
 .typing-area {
     height: 7%;
     background-color: #222;
     border-radius: 8px;
 }
 
+/* input where user types  */
 .typing-area input {
     width: 100%;
     box-sizing: border-box;
     height: 100%;
     font-size: 1.2em;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     padding: 0 2%;
     background-color: #222;
     color: white;
@@ -107,24 +114,28 @@ body {
     font-weight: 300;
 }
 
+/* button container that plays and pause the song  */
 .pause {
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
+/* streak bar to keep user excited about their streak */
 .loading-bar {
     width: 1%;
     height: 2px;
     background-color: #3f51b5;
 }
 
+/* a simple bar for design purpose */
 .health-bar {
     width: 100%;
     height: 2px;
     background-color: #00600f;
 }
 
+/* background for animated background */
 #canvas {
     position: absolute;
     z-index: -1;
@@ -133,6 +144,7 @@ body {
     visibility: hidden;
 }
 
+/* simple button to restart the game  */
 .btn {
     background: transparent;
     border: 1px solid white;
@@ -142,6 +154,8 @@ body {
     cursor: pointer;
 }
 
-.speed, .accuracy {
+/* progress boards given fixed width to stop the fluctuation of widths due to changing speed */
+.speed,
+.accuracy {
     width: 240px;
 }

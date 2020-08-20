@@ -1,3 +1,4 @@
+// some quotes for typing
 var content_lib = [
     "What the hell am I looking at? When does this happen in the movie? Now. You're looking at now, sir. Everything that happens now, is happening now. What happened to then? We passed then. When? Just now. We're at now now. Go back to then. When? Now. Now? Now. I can't. Why? We missed it. When? Just now. When will then be now? Soon.",
     "I have a small amount of chip dip left in the container that I should use before it goes bad. I've also got some chips left to use, but the ones left at the bottom of the bag are all too tiny to scoop with while managing a reasonable chip-to-dip ratio.",
@@ -19,5 +20,5 @@ var content_lib = [
     "It's not what we eat but what we digest that makes us strong; not what we gain but what we save that makes us rich; not what we read but what we remember that makes us learned; and not what we profess but what we practice that gives us integrity.",
     "Remember to look up at the stars and not down at your feet. Try to make sense of what you see and about what makes the universe exist. Be curious. And however difficult life may seem, there is always something you can do, and succeed at. It matters that you don't just give up.",
     "Bear in mind that the wonderful things you learn in your schools are the work of many generations. All this is put in your hands as your inheritance in order that you may receive it, honor it, add to it, and one day faithfully hand it on to your children.",
-    "I always think part of success is being able to replicate results, taking what is interesting or viable about yourself as a professional person and seeing if you bring it into different situations with similar results."
-]
+    "I always think part of success is being able to replicate results, taking what is interesting or viable about yourself as a professional person and seeing if you bring it into different situations with similar results.",
+];

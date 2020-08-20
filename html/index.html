@@ -1,83 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="../js/texts.js"></script>
-    <script src="../js/main.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/gif" href="./../icon/keyboard.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
-    <script src="../js/sketch.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <title>Typing Practice</title>
-</head>
-<body>
-    <div id = "canvas">
+    <head>
+        <!-- some meta information  -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    </div>
-    <!-- container  -->
-    <div class="container">
-        <!-- health bar  -->
-        <div id='health-bar' class="health-bar">
+        <!-- styling  -->
+        <link rel="stylesheet" href="../css/index.css" />
 
-        </div>
+        <!-- JavaScript logic  -->
+        <script src="../js/texts.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/sketch.js"></script>
 
-        <!-- text container -->
-        <div id="main-container" class="main-container">
-            <span id="text-container" class="text-container">
+        <!-- title icon  -->
+        <link rel="icon" type="image/gif" href="./../icon/keyboard.png" />
 
-            </span>
-            <div id="bonus-text" class="bonus-text">
-                Well Done
-                <div>
-                    <button class="btn" onclick="restart()">
-                        Restart
-                    </button>
+        <!-- additonal libraries to help the development  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- title of the web page  -->
+        <title>Typing Practice</title>
+    </head>
+    <body>
+        <div id="canvas"></div>
+        <!-- container  -->
+        <div class="container">
+            <!-- health bar  -->
+            <div id="health-bar" class="health-bar"></div>
+
+            <!-- text container -->
+            <div id="main-container" class="main-container">
+                <span id="text-container" class="text-container"> </span>
+                <div id="bonus-text" class="bonus-text">
+                    Well Done
+                    <div>
+                        <!-- button to restart the game  -->
+                        <button class="btn" onclick="restart()">
+                            Restart
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- score  -->
-        <div id="score" class="score">
-            0
-        </div>
-
-        <!-- encouraging text  -->
-        <div class="encouraging-text">
-            Let's do this
-        </div>
-
-        <!-- progress text  -->
-        <div class="progress">
-            <!-- accuracy -->
-            <div class="accuracy">
-                Accuracy: <span id="accuracy_counter"> 0 </span> %
+            <!-- displays the score by the user: for fun purpose only -->
+            <div id="score" class="score">
+                0
             </div>
 
-            <div class="pause-container">
-                <button id="pause" class="pause" onclick="pausePlay(event)">
-                    <img id="pause-image" src="../icon/sound_on.png">
-                </button>
+            <!-- some text to keep player excited-->
+            <div class="encouraging-text">
+                Let's do this
             </div>
 
-            <!-- speed  -->
-            <div class="speed">
-                Speed: <span id="speed_counter"> 0 </span>  WPM
+            <!-- all the progress items of the game by the player -->
+            <div class="progress">
+                <!-- displays accuracy of the player -->
+                <div class="accuracy">
+                    Accuracy: <span id="accuracy_counter"> 0 </span> %
+                </div>
+
+                <!-- pause button to play pause the song  -->
+                <div class="pause-container">
+                    <button id="pause" class="pause" onclick="pausePlay(event)">
+                        <img id="pause-image" src="../icon/sound_on.png" />
+                    </button>
+                </div>
+
+                <!-- typing speed of the user calculated considering average word of five letters  -->
+                <div class="speed">
+                    Speed: <span id="speed_counter"> 0 </span> WPM
+                </div>
+            </div>
+
+            <!-- a simple streak bar aesthetic reasons  -->
+            <div id="loading-bar" class="loading-bar"></div>
+
+            <!-- container for ther input where user types -->
+            <div class="typing-area">
+                <input
+                    id="type"
+                    type="text"
+                    placeholder="Type here"
+                    onclick="onTextClick(event)"
+                    oninput="wordTyped(event)"
+                />
             </div>
         </div>
-    
-        
-        <div id='loading-bar' class="loading-bar">
-
-        </div>
-
-        <!-- typing area  -->
-        <div class="typing-area">
-            <input id="type" type="text" placeholder="Type here" onclick="onTextClick(event)" oninput="wordTyped(event)"/>
-        </div>
-        
-    </div>
-</body>
+    </body>
 </html>
