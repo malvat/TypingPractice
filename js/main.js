@@ -1,10 +1,11 @@
 var current = 0;
 var color = "#3f51b5";
-// var content = "my name is anim.";
-var content = "It's not enough to hire to fill a job. It's not even enough to hire on the basis of one's talents. You have to hire based upon a candidate's potential to grow and develop.";    
+var content = content_lib[Math.floor(Math.random() * content_lib.length)];
 var words = content.split(" ");
+var encourage_words = ['Nice', 'Good', 'Great', 'Excellent', 'Awesome', 'Unbelievable', 'Outstanding', 'Funky', 'God Like'];
 var seconds = 0;
 var start_game = false;
+var incorrent_words = 0;
 var timer;
 var streak = 1;
 var score = 0;
@@ -14,6 +15,7 @@ var end_game = false;
 var score_speed = 100;
 var score_update;
 var audio = new Audio("../audio/background.mp3");
+var timeouts = []
 var mute = false;
 var dark = {
     font_color: "white",
@@ -30,9 +32,10 @@ window.onload = async function() {
     document.getElementById('text-container').innerHTML = content;
     score_update = setInterval(updateScore, score_speed/(streak*10));
     audio.loop = true;
-    setTimeout(()=>{audio.src="../audio/frenzy.mp3"; audio.play()}, 3000);
+    //setTimeout(()=>{audio.src="../audio/frenzy.mp3"; audio.play()}, 3000);
     // setInterval(loading, 100);
 }
+
 var bar_w = 0;
 
 function loading() {
@@ -56,8 +59,8 @@ function pausePlay(event) {
 
 function onTextClick(event) {
     if(!mute) {
-        // audio.play();
-        document.getElementById('pause-image').src = "../icon/sound_off.png";
+        //audio.play();
+        //document.getElementById('pause-image').src = "../icon/sound_off.png";
     }
 }
 
@@ -101,6 +104,7 @@ function wordTyped(event) {
         setTimeout(()=>$(".encouraging-text").removeClass("encouraging-text-animated"), 4000);
     }
     calculateWPM();
+    calculateAccuracy();
 }
 
 function calculateWPM() {
@@ -115,6 +119,16 @@ function calculateWPM() {
         speed = (characters * 60/(seconds * 5)).toFixed(2);
     }
     document.getElementById('speed_counter').innerHTML = speed;
+}
+
+function calculateAccuracy() {
+    var per = (current - incorrent_words) / current * 100; 
+    per = per.toFixed(2);
+    if(per <= 0) {
+        document.getElementById('accuracy_counter').innerHTML = 0;
+    } else {
+        document.getElementById('accuracy_counter').innerHTML = per;
+    }
 }
 
 function tick() {
@@ -140,24 +154,29 @@ function spaceTyped() {
         changeText();
         streak = streak + 1;
         console.log("streak: ", streak);
-        loading();
+        loading(); 
+        if(streak % 5 == 0) {
+            showMessage(encourage_words[streak / 5]);
+        }
         score += speed * streak;
         if(current == words.length) {
             end_game = true;
+            reduce_volume_to_zero();
+            $('.main-container').css("background-color", frenzy.primary_color);
+            $('.text-container').css("visibility", "hidden");
+            $('.bonus-text').css("visibility", "visible");
+            $('#type').css("background-color", frenzy.primary_color);
+            $("body").css("background-color", frenzy.theme_color);
+            $("body").css("color", "black");
+            // toggleAnimation();
+            $("#canvas").css("visibility", "visible");
         }
     } else {
         console.log("not matched");
-    }
-    if(streak >= 10) {
-        console.log("frenzy");
-        $('.main-container').css("background-color", frenzy.primary_color);
-        $('.text-container').css("visibility", "hidden");
-        $('.bonus-text').css("visibility", "visible");
-        $('#type').css("background-color", frenzy.primary_color);
-        $("body").css("background-color", frenzy.theme_color);
-        $("body").css("color", "black");
-        // toggleAnimation();
-        $("#canvas").css("visibility", "visible");
+        streak = 0;
+        incorrent_words++;
+        bar_w = 0;
+        loading();
     }
 }
 
@@ -181,59 +200,33 @@ function changeText() {
     }
 }
 
-function visualizer() {
-  
-    audio.play();
-    var context = new AudioContext();
-    var src = context.createMediaElementSource(audio);
-    var analyser = context.createAnalyser();
-
-    var canvas = document.getElementById("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    var ctx = canvas.getContext("2d");
-
-    src.connect(analyser);
-    analyser.connect(context.destination);
-
-    analyser.fftSize = 256;
-
-    var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
-
-    var dataArray = new Uint8Array(bufferLength);
-
-    var WIDTH = canvas.width;
-    var HEIGHT = canvas.height;
-
-    var barWidth = (WIDTH / bufferLength) * 2.5;
-    var barHeight;
-    var x = 0;
-
-    function renderFrame() {
-      requestAnimationFrame(renderFrame);
-
-      x = 0;
-
-      analyser.getByteFrequencyData(dataArray);
-
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      for (var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
-        
-        var r = barHeight + (25 * (i/bufferLength));
-        var g = 250 * (i/bufferLength);
-        var b = 50;
-
-        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-        x += barWidth + 1;
-      }
+function showMessage(message) {
+    $(".encouraging-text").removeClass("encouraging-text-animated");
+    for(var i = 0; i < timeouts.length; i++) {
+        clearTimeout(i);
     }
+    timeouts = [];
+    $(".encouraging-text").html(message);
+    $(".encouraging-text").addClass("encouraging-text-animated");
+    var timeout = setTimeout(()=>$(".encouraging-text").removeClass("encouraging-text-animated"), 4000);
+    timeouts.push(timeout);
+}
 
-    audio.play();
-    renderFrame();
+var volume = 1;
+var timed;
+function reduce_volume_to_zero() {
+    timed = setInterval(reduce_volume, 300);
+    setTimeout(()=>{clearInterval(timed); console.log("stopped")}, 4000);
+}
+
+function reduce_volume() {
+    volume-= 0.08;
+    if( volume <= 0) {
+        volume = 0;
+    }
+    audio.volume = volume;
+}
+
+function restart() {
+    window.location = "./index.html"
 }

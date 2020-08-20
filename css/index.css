@@ -38,7 +38,7 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 40%;
+    top: 30%;
     font-size: 3em;
     letter-spacing: 20px;
     text-align: center;
@@ -131,4 +131,17 @@ body {
     height: 100vh;
     width: 100vw;
     visibility: hidden;
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.speed, .accuracy {
+    width: 240px;
 }

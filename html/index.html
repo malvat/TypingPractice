@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/texts.js"></script>
     <script src="../js/main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/gif" href="./../icon/keyboard.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
     <script src="../js/sketch.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -28,7 +30,12 @@
 
             </span>
             <div id="bonus-text" class="bonus-text">
-                ANIM MALVAT
+                Well Done
+                <div>
+                    <button class="btn" onclick="restart()">
+                        Restart
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -46,7 +53,7 @@
         <div class="progress">
             <!-- accuracy -->
             <div class="accuracy">
-                Accuracy: <span> 90% </span>
+                Accuracy: <span id="accuracy_counter"> 0 </span> %
             </div>
 
             <div class="pause-container">
@@ -57,7 +64,7 @@
 
             <!-- speed  -->
             <div class="speed">
-                Speed: <span id="speed_counter"> 60 </span>  WPM
+                Speed: <span id="speed_counter"> 0 </span>  WPM
             </div>
         </div>
     
@@ -70,10 +77,6 @@
         <div class="typing-area">
             <input id="type" type="text" placeholder="Type here" onclick="onTextClick(event)" oninput="wordTyped(event)"/>
         </div>
-
-        <audio id="audio" autoplay>
-            <source src="../audio/background.mp3" type="audio/mp3">
-        </audio>
         
     </div>
 </body>
