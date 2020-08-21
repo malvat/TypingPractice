@@ -1,5 +1,5 @@
 # TypingPractice
-a web app to help myself type faster
+a typing practice web application that looks good, built in HTML CSS JavaScript 
 
 ## Things used in the project
 - HTML5 CSS
