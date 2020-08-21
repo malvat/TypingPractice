@@ -1,5 +1,5 @@
 var current = 0; // current word from the content
-var color = "#3f51b5"; // theme color of the website
+var clr = "#3f51b5"; // theme color of the website
 var content =
     content_lib[Math.floor((Math.random() * 100) % content_lib.length)]; // choosing random quote from the list
 var words = content.split(" "); // array of words from the quote/content
@@ -100,17 +100,17 @@ function wordTyped(event) {
     var regmatch = words[current].match("^" + event.target.value);
     if (regmatch == null && event.target.value !== "") {
         // start of the word is not matched and therefore, highlighted with red
-        color = "#e53935";
+        clr = "#e53935";
     } else {
         // word is matched and therefore, highlighted with blue
-        color = "#3f51b5";
+        clr = "#3f51b5";
     }
     // move to the next word
     changeText();
 
     // as user enters space move to the next word if the word is correct
     if (event.target.value[event.target.value.length - 1] === " ") {
-        color = "#3f51b5";
+        clr = "#3f51b5";
         spaceTyped();
     }
 
@@ -239,7 +239,7 @@ function changeText() {
     // set the styling
     text.innerHTML +=
         "<span style='background-color:" +
-        color +
+        clr +
         "';font-weight:800;>" +
         words[current] +
         " </span>";
